@@ -1,0 +1,29 @@
+1️⃣ What is HashMap Internally?
+
+Internally it looks like:
+Node<K,V>[] table;
+
+2️⃣ Internal Structure of Node
+
+Simplified version:
+static class Node<K,V> {
+    final int hash;
+    final K key;
+    V value;
+    Node<K,V> next;
+}
+
+So each bucket contains:     
+hash
+key
+value
+next (for linked list)
+
+
+Java 8 Improvement
+If bucket size becomes:
+
+≥ 8 → Convert to Red-Black Tree
+< 6 → Convert back to LinkedList
+
+This improves performance from: O(n) → O(log n)
